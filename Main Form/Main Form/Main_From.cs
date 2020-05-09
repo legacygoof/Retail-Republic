@@ -16,6 +16,9 @@ namespace Main_Form
 {
     public partial class Main_From : Form
     {
+        /// <summary>
+        /// Form Initialation
+        /// </summary>
         public Main_From()
         {
             InitializeComponent();
