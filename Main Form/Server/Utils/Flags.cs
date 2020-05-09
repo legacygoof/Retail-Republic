@@ -6,6 +6,14 @@ public enum ProcessCodes : ushort
 {
     Login,
     Register,
+    Message,
+    Ban,
+    Kick,
+    Reboot,
+    Version,
+    Logger,
+    Command,
+    UpdateUsers,
     Fail
 }
 
@@ -18,5 +26,5 @@ public enum ErrorCodes : ushort
     Token_Used,
     Is_Logged_In,
     Version_Success,
-    Erorr
+    Error
 }
