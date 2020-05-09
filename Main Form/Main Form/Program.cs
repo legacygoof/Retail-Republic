@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium;
 
 namespace Main_Form
 {
@@ -16,7 +18,11 @@ namespace Main_Form
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            //Application.Run(new Login());
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "https://www.supremenewyork.com/shop/all";
+
         }
     }
 }
