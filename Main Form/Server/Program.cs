@@ -26,14 +26,16 @@ namespace Server
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            Thread cmdLoop = new Thread(CommandLoop);
-            // cmdLoop.IsBackground = true;
-            cmdLoop.Start();
             server.Start();
+            Thread cmdLoop = new Thread(CommandLoop);
+            //cmdLoop.IsBackground = true;
+            
+            
+            cmdLoop.Start();
             Login_Helper.InitializeDB();
             Log.InitiateLog();
 
-            //Console.ReadLine();
+            Console.ReadLine();
         }
 
 
