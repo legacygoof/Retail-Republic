@@ -10,7 +10,7 @@ namespace Server
     {
         //database config
         private static string SERVER = "127.0.0.1";
-        private static string DATABASE = "legacy";
+        private static string DATABASE = "retail_republic";
         private static string UID = "root";
         private static string PASSWORD = "";
         private static MySqlConnection dbConn;
@@ -89,7 +89,7 @@ namespace Server
 
             }
         }
-        //when user logs out, overloaded method cause lazy :p
+        //when user logs out, overloaded method cause lazy 
         public static void UpdateUser(string username)
         {
             string query = "UPDATE Users SET LoggedIn=@logged Where Username=@uname";
@@ -116,7 +116,7 @@ namespace Server
             dbConn.Close();
             Log.Error(username + " Has Been Banned By Server!");
         }
-
+        
         public static void UnBanUser(string username)
         {
             string query = "UPDATE Users SET Banned=@banned Where Username=@uname";
