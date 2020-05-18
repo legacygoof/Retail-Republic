@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace Server
+namespace Main_Form
 {
+ 
     class PacketWriter
     {
-        public byte[] sendString(string msg)
+        public static byte[] sendString(string msg)
         {
             byte[] data = Encoding.ASCII.GetBytes(msg);
             return data;
         }
     }
+
+
 }
