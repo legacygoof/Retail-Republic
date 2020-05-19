@@ -1,6 +1,6 @@
 ﻿namespace Main_Form
 {
-    partial class Main_From
+    partial class Retail_Republic
     {
         /// <summary>
         /// Required designer variable.

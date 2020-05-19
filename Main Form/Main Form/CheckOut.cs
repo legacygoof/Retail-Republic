@@ -21,8 +21,8 @@ namespace Main_Form
         {
             String keyword = "Silk S/S Work Shirt";
             String keyword2 = "Peach";
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            //Application.EnableVisualStyles();
+           // Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Login());
             IWebDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
@@ -51,25 +51,25 @@ namespace Main_Form
             Thread.Sleep(100);
 
 
-            driver.FindElement(By.Id("order_billing_name")).SendKeys("hello");
-            driver.FindElement(By.Id("order_email")).SendKeys("Brandon Email");
-            driver.FindElement(By.Id("order_tel")).SendKeys("8153333333");
-            driver.FindElement(By.Id("bo")).SendKeys("1606 Kevin St");
-            driver.FindElement(By.Id("order_billing_zip")).SendKeys("60506");
-            driver.FindElement(By.Id("order_billing_city")).SendKeys("Joliet");
+            driver.FindElement(By.Id("order_billing_name")).SendKeys("hello");//Full Name
+            driver.FindElement(By.Id("order_email")).SendKeys("Brandon Email");//Email
+            driver.FindElement(By.Id("order_tel")).SendKeys("8153333333");//Phone #
+            driver.FindElement(By.Id("bo")).SendKeys("1606 Kevin St");// Address
+            driver.FindElement(By.Id("order_billing_zip")).SendKeys("60506");//Zip Code
+            driver.FindElement(By.Id("order_billing_city")).SendKeys("Joliet");// City
             var StateOption = driver.FindElement(By.Id("order_billing_state"));
             var selectState = new SelectElement(StateOption);
-            selectState.SelectByText("IL");
+            selectState.SelectByText("IL");// State
             var CountryOption = driver.FindElement(By.Id("order_billing_country"));
             var selectCountry = new SelectElement(CountryOption);
-            selectCountry.SelectByText("USA");
+            selectCountry.SelectByText("USA");//Country
 
 
             driver.FindElement(By.Id("rnsnckrn")).SendKeys("123b12j4g12u4g124");
             var selectMonth = new SelectElement(driver.FindElement(By.Id("credit_card_month")));
-            selectMonth.SelectByText("01");
+            selectMonth.SelectByText("01");//CC Month
             var selectYear = new SelectElement(driver.FindElement(By.Id("credit_card_year")));
-            selectYear.SelectByText("2028");
+            selectYear.SelectByText("2028");//CC Year
             driver.FindElement(By.Id("orcer")).SendKeys("123");
             driver.FindElement(By.ClassName("iCheck-helper")).Click();
             var check = driver.FindElement(By.Id("order_terms"));

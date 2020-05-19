@@ -14,16 +14,17 @@ using OpenQA.Selenium.Chrome;
 
 namespace Main_Form
 {
-    public partial class Main_From : Form
+    public partial class Retail_Republic : Form
     {
-        public Main_From()
+        public Retail_Republic()
         {
             InitializeComponent();
         }
 
         private void Main_From_Load(object sender, EventArgs e)
         {
-
+            CheckOut co = new CheckOut();
+            co.EnterInformation();
         }
 
     }
