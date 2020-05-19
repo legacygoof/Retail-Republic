@@ -8,7 +8,7 @@ namespace Main_Form.Utils
 {
     class KeyWords
     {
-        private string keyWord1, keyWord2, keyWord3, keyWord4;
+        private string keyWord1, keyWord2, keyWord3, keyWord4, itemSize;
 
         public string KeyWord1
         {
@@ -29,6 +29,11 @@ namespace Main_Form.Utils
         {
             get { return keyWord4; }
             set { keyWord4 = value; }
+        }
+        public string ItemSize
+        {
+            get { return itemSize; }
+            set { itemSize = value; }
         }
      
     }

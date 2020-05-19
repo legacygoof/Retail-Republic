@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Main_Form.Utils;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
@@ -14,18 +15,36 @@ using OpenQA.Selenium.Chrome;
 
 namespace Main_Form
 {
-    public partial class Retail_Republic : Form
+    public partial class Main_From : Form
     {
-        public Retail_Republic()
+        KeyWords keys = new KeyWords();
+        CheckOut check = new CheckOut();
+        public Main_From()
         {
             InitializeComponent();
         }
 
         private void Main_From_Load(object sender, EventArgs e)
         {
-            CheckOut co = new CheckOut();
-            co.EnterInformation();
+
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            keys.KeyWord1 = textBox1.Text;
+            keys.KeyWord2 = textBox2.Text;
+            check.EnterInformation();
+
+        }
     }
 }
