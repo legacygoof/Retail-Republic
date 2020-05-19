@@ -22,6 +22,8 @@ namespace Main_Form
         [STAThread]
         static void Main()
         {
+            //Application.Run(new Login());
+            //Application.Run(new Add_Task());
             Application.Run(new Retail_Republic());
 
         }

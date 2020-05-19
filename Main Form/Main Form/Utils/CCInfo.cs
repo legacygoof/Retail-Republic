@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Main_Form.Utils
+namespace Main_Form
 {
     class CCInfo
     {

@@ -9,8 +9,8 @@ namespace Server
     class Login_Helper
     {
         //database config
-        private static string SERVER = "127.0.0.1";
-        private static string DATABASE = "retail_republic";
+        private static string SERVER = "localhost";
+        private static string DATABASE = "legacy";
         private static string UID = "root";
         private static string PASSWORD = "";
         private static MySqlConnection dbConn;

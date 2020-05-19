@@ -25,12 +25,11 @@ namespace Main_Form
             CCInfo cCInfo = new CCInfo();
             String keyword = "Silk S/S Work Shirt";
             String keyword2 = "Peach";
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Login());
+            String site = "";
+
             IWebDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
-            driver.Url = "https://www.supremenewyork.com/shop/all/shirts";
+            driver.Url = "https://www.supremenewyork.com/shop/all/"+site;
 
 
             //Find product through keywords

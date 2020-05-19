@@ -61,7 +61,7 @@ namespace Main_Form
             ccInfo.CCExpMonth = textBox6.Text;
             ccInfo.CCExpYear = textBox5.Text;
             ccInfo.CCCsv = textBox1.Text; 
-            Application.Run(new Main_From());
+            
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)//Last Name
@@ -105,6 +105,11 @@ namespace Main_Form
         }
 
         private void textBox9_TextChanged(object sender, EventArgs e) //zipcode
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }
