@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Main_Form.Utils;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System.Runtime.InteropServices;
 
 
 
@@ -17,6 +18,15 @@ namespace Main_Form
 {
     public partial class Retail_Republic : Form
     {
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
         KeyWords keys = new KeyWords();
         CheckOut check = new CheckOut();
         Button ActiveButton; 
@@ -171,6 +181,15 @@ namespace Main_Form
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
     }
 }
