@@ -126,6 +126,7 @@
             this.label4.Size = new System.Drawing.Size(245, 95);
             this.label4.TabIndex = 9;
             this.label4.Text = "Retail";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label6
             // 
@@ -273,7 +274,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Main_Form.Properties.Resources.Closert;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(65)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1021, 645);
             this.Controls.Add(this.label12);
