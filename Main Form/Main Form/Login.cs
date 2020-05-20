@@ -100,7 +100,7 @@ namespace Main_Form
         {
             if (client.Connected)
             {
-                byte[] arr = PacketWriter.sendString(Convert.ToString(0+ " " + textBox1.Text + " " + textBox2.Text + " " + textBox3.Text));
+                byte[] arr = PacketWriter.sendString(Convert.ToString(0+ " " + textBox1.Text + " " + textBox2.Text));
                 client.Send(arr);
             }
         }
@@ -137,6 +137,9 @@ namespace Main_Form
                         if (msgArgs[0] == ErrorCodes.Login_Success.ToString())
                         {
                             loggedin = true;
+                            //Retail_Republic rr = new Retail_Republic();
+                            //rr.Show();
+                            Application.Run(new Retail_Republic());
                         }
                         else
                         {
@@ -208,6 +211,11 @@ namespace Main_Form
 
                 }
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
