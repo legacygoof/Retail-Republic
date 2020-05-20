@@ -102,6 +102,7 @@
     <Compile Include="Utils\PacketReader.cs" />
     <Compile Include="Utils\PacketWriter.cs" />
     <Compile Include="Utils\Profile.cs" />
+    <Compile Include="Utils\TaskInfo.cs" />
     <Compile Include="Utils\UserInformation.cs" />
     <EmbeddedResource Include="Add Task.resx">
       <DependentUpon>Add Task.cs</DependentUpon>
