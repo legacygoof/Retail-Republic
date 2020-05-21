@@ -15,6 +15,8 @@ namespace Main_Form
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
+        List<string> keywords;
+
 
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -24,6 +26,7 @@ namespace Main_Form
         public Add_Task()
         {
             InitializeComponent();
+            keywords = new List<string>();
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -38,7 +41,19 @@ namespace Main_Form
 
         private void CreateTask_Click(object sender, EventArgs e)
         {
-            TaskInfo ti = new TaskInfo();
+            string k = KeywordBox.Text;
+            k = k.Replace(" ", string.Empty);
+            string[] kw = k.Split(',');
+            for(int i = 0; i < kw.Length; i++)
+            {
+                keywords.Add(kw[i]);
+            }
+            int h = 0;
+            if (AmPmBox.SelectedIndex == 0)
+                h = Convert.ToInt32(TimeBox.Text);
+            else
+                h = Convert.ToInt32(TimeBox.Text) + 12;
+            TaskInfo ti = new TaskInfo(SiteBox.Text,SizeBox.Text,keywords,CategoryBox.Text,"red", new Profile(new CCInfo(), new UserInformation()), h);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -58,6 +73,11 @@ namespace Main_Form
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void TimeBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

@@ -140,7 +140,7 @@ namespace Main_Form
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            ChangeForm(new PaymentInformation(), sender);
+            ChangeForm(new Main_Form.Forms.SettingsForm(), sender);
             ActivateButton(button2);
             
         }
