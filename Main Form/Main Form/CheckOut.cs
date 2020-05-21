@@ -25,11 +25,11 @@ namespace Main_Form
             CCInfo cCInfo = new CCInfo();
             String keyword = "Silk S/S Work Shirt";
             String keyword2 = "Peach";
-            String site = "";
+            //String site = "";
 
             IWebDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
-            driver.Url = "https://www.supremenewyork.com/shop/all/"+site;
+            driver.Url = "https://www.supremenewyork.com/shop/all/shirts";
 
 
             //Find product through keywords
@@ -39,7 +39,7 @@ namespace Main_Form
 
             for (int i = 0; i < count; i++)
             {
-                if (details.ElementAt(i).Text == keyWords.KeyWord1 && details.ElementAt(i + 1).Text == keyWords.KeyWord2)
+                if (details.ElementAt(i).Text == keyword && details.ElementAt(i + 1).Text == keyword2)
                 {
                     details.ElementAt(i).Click();
                     break;
@@ -48,7 +48,7 @@ namespace Main_Form
             Thread.Sleep(900);
             var option = driver.FindElement(By.Id("s"));
             var selectElement = new SelectElement(option);
-            selectElement.SelectByText(keyWords.ItemSize);
+            selectElement.SelectByText("Large");
             // select by text
             driver.FindElement(By.Name("commit")).Click();
             Thread.Sleep(2000);
@@ -88,6 +88,7 @@ namespace Main_Form
             action.MoveToElement(check).Click().Perform();
             driver.FindElement(By.Name("commit")).Click();
             // Thread.Sleep(1000);
+
         }
     }
 }

@@ -242,7 +242,7 @@
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(68, 346);
+            this.textBox9.Location = new System.Drawing.Point(68, 350);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(126, 20);
             this.textBox9.TabIndex = 22;
