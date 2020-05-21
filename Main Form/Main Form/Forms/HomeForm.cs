@@ -27,5 +27,10 @@ namespace Main_Form.Forms
                 createTask = new Add_Task();
             createTask.Show();
         }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

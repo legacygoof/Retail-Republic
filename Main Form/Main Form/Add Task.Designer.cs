@@ -38,12 +38,12 @@
             this.CategoryBox = new System.Windows.Forms.ComboBox();
             this.ProfileBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.TimeBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.AmPmBox = new System.Windows.Forms.ComboBox();
             this.CreateTask = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.TimeBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +66,7 @@
             // 
             // SizeBox
             // 
+            this.SizeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SizeBox.FormattingEnabled = true;
             this.SizeBox.Items.AddRange(new object[] {
             "Small",
@@ -114,6 +115,7 @@
             // 
             // CategoryBox
             // 
+            this.CategoryBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoryBox.FormattingEnabled = true;
             this.CategoryBox.Items.AddRange(new object[] {
             "Jackets",
@@ -135,6 +137,7 @@
             // 
             // ProfileBox
             // 
+            this.ProfileBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ProfileBox.FormattingEnabled = true;
             this.ProfileBox.Location = new System.Drawing.Point(80, 167);
             this.ProfileBox.Name = "ProfileBox";
@@ -151,13 +154,6 @@
             this.label5.Text = "Profile:";
             this.label5.Click += new System.EventHandler(this.label4_Click);
             // 
-            // TimeBox
-            // 
-            this.TimeBox.Location = new System.Drawing.Point(80, 195);
-            this.TimeBox.Name = "TimeBox";
-            this.TimeBox.Size = new System.Drawing.Size(79, 20);
-            this.TimeBox.TabIndex = 6;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -170,6 +166,7 @@
             // 
             // AmPmBox
             // 
+            this.AmPmBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AmPmBox.FormattingEnabled = true;
             this.AmPmBox.Items.AddRange(new object[] {
             "A.M.",
@@ -213,6 +210,14 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // TimeBox
+            // 
+            this.TimeBox.Location = new System.Drawing.Point(80, 195);
+            this.TimeBox.Name = "TimeBox";
+            this.TimeBox.Size = new System.Drawing.Size(79, 20);
+            this.TimeBox.TabIndex = 6;
+            this.TimeBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TimeBox_KeyPress);
             // 
             // Add_Task
             // 
@@ -258,11 +263,11 @@
         private System.Windows.Forms.ComboBox CategoryBox;
         private System.Windows.Forms.ComboBox ProfileBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox TimeBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox AmPmBox;
         private System.Windows.Forms.Button CreateTask;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox TimeBox;
     }
 }
