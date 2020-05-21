@@ -12,9 +12,16 @@ namespace Main_Form.Forms
 {
     public partial class SettingsForm : Form
     {
+        List<Profile> profiles;
         public SettingsForm()
         {
             InitializeComponent();
+            profiles = new List<Profile>();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
