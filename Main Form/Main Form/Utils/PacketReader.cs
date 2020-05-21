@@ -8,14 +8,14 @@ namespace Main_Form
 {
     class PacketReader
     {
-        public string ReadString(int size, byte[] data)
+        public static string ReadString(int size, byte[] data)
         {
             string txt = "";
 
             return txt;
         }
 
-        public string[] ReceiveMsg(int size, byte[] data)
+        public static string[] ReceiveMsg(int size, byte[] data)
         {
             byte[] temp = new byte[size];
             Array.Copy(data, temp, size);//copies data

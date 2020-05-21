@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Main_Form
 {
- 
     class PacketWriter
     {
         public static byte[] sendString(string msg)
@@ -15,6 +14,4 @@ namespace Main_Form
             return data;
         }
     }
-
-
 }

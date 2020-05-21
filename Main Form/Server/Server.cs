@@ -24,11 +24,11 @@ namespace Server
         {
             drawLogo();
             Log.Write("Starting Server...");
-            server.Bind(new IPEndPoint(IPAddress.Any, 1234));
-            //server.Bind(new IPEndPoint(IPAddress.Parse("10.0.0.185"), 1234));
+            //server.Bind(new IPEndPoint(IPAddress.Any, 1234));
+            server.Bind(new IPEndPoint(IPAddress.Parse("10.0.0.185"), 1234));
             server.Listen(5);
             Log.Write("Started!");
-            Thread.Sleep(2000);
+            //Thread.Sleep(2000);
             Console.Clear();
             drawLogo();
             Log.Write("Listening on port " + 1234 + "\nWaiting for clients");
@@ -86,9 +86,12 @@ namespace Server
         {
             string msg = ProcessCodes.Kick.ToString() + " " + message;
             Users user = userList.Find(i => i.Name == username);
-            Socket socket = user.clientSocket;
-            byte[] data = Encoding.ASCII.GetBytes(msg);
-            socket.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallback), socket);
+            if (user != null)
+            {
+                Socket socket = user.clientSocket;
+                byte[] data = Encoding.ASCII.GetBytes(msg);
+                socket.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallback), socket);
+            }
         }
 
         public void SendUserMsg(string username, string message)
@@ -133,7 +136,7 @@ namespace Server
             socket.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallback), socket);
         }
 
-        public void RebootServer()
+        public void RebootServer() 
         {
 
             string msg = ProcessCodes.Reboot.ToString() + " Server is rebooting or an update is required exiting application now!";
@@ -149,6 +152,7 @@ namespace Server
         #region server client processing
         private void AcceptCallback(IAsyncResult ar)
         {
+            Log.Write("called");
             Socket socket;
             try
             {
@@ -157,6 +161,7 @@ namespace Server
             }
             catch (ObjectDisposedException)
             {
+                Log.Error("Disposing Excepting");
                 return;
             }
             userList.Add(new Users(socket.RemoteEndPoint.ToString(), socket));
@@ -199,29 +204,22 @@ namespace Server
                 }
 
             }
-            //Everytime a user disconnects this is called
             catch (SocketException)
             {
                 int msgtype = 0;
                 string rep = "";
-
-                //creates a user object for regular users
                 Users user = userList.Find(i => i.IP == socket.RemoteEndPoint.ToString());
-
-                //creates an admin object for admin user
                 Admins admin = adminList.Find(i => i.IP == socket.RemoteEndPoint.ToString());
-
-
                 if (user != null && user.Name != null && user.Name != "")
                 {
-                    //set user to logged off
+
                     Log.Warning(user.Name + " Has Forcefully Disconnected!");
                     msgtype = 1;
                     Login_Helper.UpdateUser(user.Name);
                 }
                 else if (admin != null && admin.Name != null && admin.Name != "")
                 {
-                    //sets admin to log off
+
                     Log.Warning("ADMIN: " + admin.Name + " Has Forcefully Disconnected!");
                     msgtype = 3;
                     Login_Helper.UpdateUser(admin.Name);
@@ -376,19 +374,27 @@ namespace Server
             Console.ForegroundColor = ConsoleColor.Red;
 
             Console.WriteLine("██████╗░███████╗████████╗░█████╗░██╗██╗░░░░░  ");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██║██║░░░░░  ");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("██████╔╝█████╗░░░░░██║░░░███████║██║██║░░░░░  ");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("██╔══██╗██╔══╝░░░░░██║░░░██╔══██║██║██║░░░░░  ");
+
             Console.WriteLine("██║░░██║███████╗░░░██║░░░██║░░██║██║███████╗  ");
-            Console.WriteLine("╚═╝░░╚═╝╚══════╝░░░╚═╝░░░╚═╝░░╚═╝╚═╝╚══════╝  ");
             Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("╚═╝░░╚═╝╚══════╝░░░╚═╝░░░╚═╝░░╚═╝╚═╝╚══════╝  ");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("██████╗░███████╗██████╗░██╗░░░██╗██████╗░██╗░░░░░██╗░█████╗░");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("██╔══██╗██╔════╝██╔══██╗██║░░░██║██╔══██╗██║░░░░░██║██╔══██╗");
+
             Console.WriteLine("██████╔╝█████╗░░██████╔╝██║░░░██║██████╦╝██║░░░░░██║██║░░╚═╝");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("██╔══██╗██╔══╝░░██╔═══╝░██║░░░██║██╔══██╗██║░░░░░██║██║░░██╗");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("██║░░██║███████╗██║░░░░░╚██████╔╝██████╦╝███████╗██║╚█████╔╝");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("╚═╝░░╚═╝╚══════╝╚═╝░░░░░░╚═════╝░╚═════╝░╚══════╝╚═╝░╚════╝░");
             Console.ResetColor();
         }

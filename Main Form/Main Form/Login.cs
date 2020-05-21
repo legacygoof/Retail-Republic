@@ -11,7 +11,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace Main_Form
 {
     public partial class Login : Form
@@ -23,6 +22,9 @@ namespace Main_Form
         Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
         Thread msgLoop;
+        
+
+
         public Login()
         {
             InitializeComponent();
@@ -36,74 +38,32 @@ namespace Main_Form
             Connect();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-        /// <summary>
-        /// Login Field
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        /// <summary>
-        /// Password Field
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        /// <summary>
-        /// Key Field
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-        /// <summary>
-        /// Login Button 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
-        {
-            loginFunction();
-        }
-        private void loginFunction()
+        private void DoLogin()
         {
             if (client.Connected)
             {
-                byte[] arr = PacketWriter.sendString(Convert.ToString(0+ " " + textBox1.Text + " " + textBox2.Text));
-                client.Send(arr);
+                byte[] data = PacketWriter.sendString(Convert.ToString(0 + " " + textBox1.Text + " " + textBox2.Text));
+                client.Send(data);
             }
         }
+
+        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("Logged In");
+            //Main_Form form = new Main_Form();
+            //form.Show();
+            //this.Hide();
+        }
+
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while (loggedin == false)
+            {
+
+            }
+        }
+
+
         public void ServerMsgLoop()
         {
             while (true)
@@ -137,9 +97,6 @@ namespace Main_Form
                         if (msgArgs[0] == ErrorCodes.Login_Success.ToString())
                         {
                             loggedin = true;
-                            //Retail_Republic rr = new Retail_Republic();
-                            //rr.Show();
-                            Application.Run(new Retail_Republic());
                         }
                         else
                         {
@@ -170,24 +127,9 @@ namespace Main_Form
                 }
             }
         }
-        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            MessageBox.Show("Logged In");
-            //Main_Form form = new Main_Form();
-            //form.Show();
-            //this.Hide();
-        }
 
-        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            while (loggedin == false)
-            {
-
-            }
-        }
         private void Connect()
         {
-
             //right now testing is being done on local host 
             //we'll use a while loop until a connection is made, might want to add a counter later
             while (!client.Connected)
@@ -213,9 +155,51 @@ namespace Main_Form
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+
+
+        private void Form1_Load(object sender, EventArgs e)
         {
-            Application.Exit();
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DoLogin();
         }
     }
 }
