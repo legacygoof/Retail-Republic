@@ -12,9 +12,20 @@ namespace Main_Form.Forms
 {
     public partial class HomeForm : Form
     {
+        Add_Task createTask;
+        List<string> Keywords;
+        List<string> TaskInfo;
         public HomeForm()
         {
             InitializeComponent();
+            createTask = new Add_Task();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (createTask.IsDisposed)
+                createTask = new Add_Task();
+            createTask.Show();
         }
     }
 }
