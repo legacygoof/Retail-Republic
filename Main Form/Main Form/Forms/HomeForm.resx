@@ -117,13 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="listBox1.Items" xml:space="preserve">
-    <value>Supreme                  Coivd-19 Box Logo                Medium                             None                                  None                          Waiting                        10:00a.m.</value>
-  </data>
-  <data name="listBox1.Items1" xml:space="preserve">
-    <value>Supreme                  Coivd-19 Box Logo                Medium                             None                                  None                          Waiting                        10:00a.m.</value>
-  </data>
-  <data name="listBox1.Items2" xml:space="preserve">
-    <value>Supreme                  Coivd-19 Box Logo                Medium                             None                                  None                          Waiting                        10:00a.m.</value>
-  </data>
 </root>

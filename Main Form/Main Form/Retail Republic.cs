@@ -11,8 +11,12 @@ using Main_Form.Utils;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Runtime.InteropServices;
-
-
+using System.IO;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+using System.Threading;
 
 namespace Main_Form
 {
@@ -21,11 +25,14 @@ namespace Main_Form
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
-
         [DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
+
+        //Global Lists
+        List<TaskInfo> taskList;
+        List<Profile> profileList;
 
         KeyWords keys = new KeyWords();
         CheckOut check = new CheckOut();
@@ -33,13 +40,40 @@ namespace Main_Form
         Form ActiveForm = null;
         public Retail_Republic()
         {
+            initializeList();
             InitializeComponent();
+            taskList = new List<TaskInfo>();
             ActiveButton = button1;
-            ChangeForm(new Main_Form.Forms.HomeForm(),new  object());
+            ChangeForm(new Main_Form.Forms.HomeForm(taskList, profileList),new  object());
         }
 
         private void Main_From_Load(object sender, EventArgs e)
         {
+            //readJsonData();
+            //initializeList();
+            
+        }
+
+        private void initializeList()
+        {
+            
+            string s = File.ReadAllText("profiles.json");
+            profileList = JsonConvert.DeserializeObject<List<Profile>>(s);
+        }
+
+        public void readJsonData()
+        {
+            
+            profileList = new List<Profile>();
+            profileList.Add(new Profile("Profile 1",new CCInfo { CCNumber = "234324324", CCExpYear = "3453", CCCsv = "324", CCExpMonth = "22" }, new UserInformation { Address = "222", Email = "asf@asf.com", FName = "Ryan", LName = "dill", TelNumber = "2213213123", ZipCode = "24242" }));
+            profileList.Add(new Profile("Profile 2" ,new CCInfo { CCNumber = "234324324", CCExpYear = "3453", CCCsv = "324", CCExpMonth = "22" }, new UserInformation { Address = "222", Email = "asf@asf.com", FName = "Ryan", LName = "dill", TelNumber = "2213213123", ZipCode = "24242" }));
+            string json = JsonConvert.SerializeObject(profileList);
+            File.WriteAllText("profiles.json", json);
+            string s = File.ReadAllText("profiles.json");
+            //t = JsonConvert.DeserializeObject<List<test>>(s);
+            //test[] t = JsonConvert.DeserializeObject<test[]>(s);
+            MessageBox.Show(profileList[1].name);
+            profileList.Clear();
 
         }
 
@@ -140,7 +174,7 @@ namespace Main_Form
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            ChangeForm(new Main_Form.Forms.SettingsForm(), sender);
+            ChangeForm(new Main_Form.Forms.SettingsForm(profileList), sender);
             ActivateButton(button2);
             
         }
@@ -152,7 +186,7 @@ namespace Main_Form
         /// <param name="e"></param>
         private void button1_Click_1(object sender, EventArgs e)
         {
-            ChangeForm(new Main_Form.Forms.HomeForm(), sender);
+            ChangeForm(new Main_Form.Forms.HomeForm(taskList,profileList), sender);
             ActivateButton(button1);
         }
 

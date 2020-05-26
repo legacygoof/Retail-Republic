@@ -44,13 +44,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.TimeBox = new System.Windows.Forms.TextBox();
+            this.ColorBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // SiteBox
             // 
-            this.SiteBox.Location = new System.Drawing.Point(80, 60);
+            this.SiteBox.Location = new System.Drawing.Point(82, 68);
             this.SiteBox.Name = "SiteBox";
             this.SiteBox.Size = new System.Drawing.Size(145, 20);
             this.SiteBox.TabIndex = 0;
@@ -58,7 +61,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 63);
+            this.label1.Location = new System.Drawing.Point(41, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 13);
             this.label1.TabIndex = 1;
@@ -73,7 +76,7 @@
             "Medium",
             "Large",
             "XL"});
-            this.SizeBox.Location = new System.Drawing.Point(80, 86);
+            this.SizeBox.Location = new System.Drawing.Point(82, 120);
             this.SizeBox.Name = "SizeBox";
             this.SizeBox.Size = new System.Drawing.Size(145, 21);
             this.SizeBox.TabIndex = 2;
@@ -81,7 +84,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(39, 89);
+            this.label2.Location = new System.Drawing.Point(41, 123);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 1;
@@ -89,7 +92,7 @@
             // 
             // KeywordBox
             // 
-            this.KeywordBox.Location = new System.Drawing.Point(80, 114);
+            this.KeywordBox.Location = new System.Drawing.Point(82, 148);
             this.KeywordBox.Name = "KeywordBox";
             this.KeywordBox.Size = new System.Drawing.Size(145, 20);
             this.KeywordBox.TabIndex = 3;
@@ -97,7 +100,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 117);
+            this.label3.Location = new System.Drawing.Point(14, 151);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 1;
@@ -106,7 +109,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 143);
+            this.label4.Location = new System.Drawing.Point(18, 177);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 1;
@@ -130,7 +133,7 @@
             "Accessories",
             "Shoes",
             "Skate"});
-            this.CategoryBox.Location = new System.Drawing.Point(80, 140);
+            this.CategoryBox.Location = new System.Drawing.Point(82, 174);
             this.CategoryBox.Name = "CategoryBox";
             this.CategoryBox.Size = new System.Drawing.Size(145, 21);
             this.CategoryBox.TabIndex = 4;
@@ -139,7 +142,7 @@
             // 
             this.ProfileBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ProfileBox.FormattingEnabled = true;
-            this.ProfileBox.Location = new System.Drawing.Point(80, 167);
+            this.ProfileBox.Location = new System.Drawing.Point(82, 201);
             this.ProfileBox.Name = "ProfileBox";
             this.ProfileBox.Size = new System.Drawing.Size(145, 21);
             this.ProfileBox.TabIndex = 5;
@@ -147,7 +150,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 170);
+            this.label5.Location = new System.Drawing.Point(30, 204);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 13);
             this.label5.TabIndex = 1;
@@ -157,7 +160,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(30, 198);
+            this.label6.Location = new System.Drawing.Point(32, 232);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(33, 13);
             this.label6.TabIndex = 1;
@@ -171,7 +174,7 @@
             this.AmPmBox.Items.AddRange(new object[] {
             "A.M.",
             "P.M."});
-            this.AmPmBox.Location = new System.Drawing.Point(165, 194);
+            this.AmPmBox.Location = new System.Drawing.Point(167, 228);
             this.AmPmBox.Name = "AmPmBox";
             this.AmPmBox.Size = new System.Drawing.Size(60, 21);
             this.AmPmBox.TabIndex = 7;
@@ -180,7 +183,7 @@
             // 
             this.CreateTask.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(185)))), ((int)(((byte)(98)))));
             this.CreateTask.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.CreateTask.Location = new System.Drawing.Point(12, 244);
+            this.CreateTask.Location = new System.Drawing.Point(12, 325);
             this.CreateTask.Name = "CreateTask";
             this.CreateTask.Size = new System.Drawing.Size(270, 56);
             this.CreateTask.TabIndex = 8;
@@ -213,18 +216,46 @@
             // 
             // TimeBox
             // 
-            this.TimeBox.Location = new System.Drawing.Point(80, 195);
+            this.TimeBox.Location = new System.Drawing.Point(82, 282);
             this.TimeBox.Name = "TimeBox";
             this.TimeBox.Size = new System.Drawing.Size(79, 20);
             this.TimeBox.TabIndex = 6;
+            this.TimeBox.TextChanged += new System.EventHandler(this.TimeBox_TextChanged);
             this.TimeBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TimeBox_KeyPress);
+            // 
+            // ColorBox
+            // 
+            this.ColorBox.Location = new System.Drawing.Point(82, 94);
+            this.ColorBox.Name = "ColorBox";
+            this.ColorBox.Size = new System.Drawing.Size(145, 20);
+            this.ColorBox.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(41, 97);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(34, 13);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Color:";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(82, 228);
+            this.maskedTextBox1.Mask = "90:00";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(79, 20);
+            this.maskedTextBox1.TabIndex = 10;
+            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.maskedTextBox1.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox1_MaskInputRejected);
             // 
             // Add_Task
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(65)))));
-            this.ClientSize = new System.Drawing.Size(294, 312);
+            this.ClientSize = new System.Drawing.Size(294, 404);
+            this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.CreateTask);
             this.Controls.Add(this.AmPmBox);
@@ -238,6 +269,8 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.ColorBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SiteBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -269,5 +302,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox TimeBox;
+        private System.Windows.Forms.TextBox ColorBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
     }
 }

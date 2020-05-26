@@ -90,6 +90,7 @@
             this.label5.Size = new System.Drawing.Size(280, 79);
             this.label5.TabIndex = 7;
             this.label5.Text = "Republic";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // textBox2
             // 

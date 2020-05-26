@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Main_Form
 {
-    class Profile
+    public class Profile
     {
-        CCInfo CC;
-        UserInformation uInfo;
+        public string name { get; set; }
+        public CCInfo CC { get; set; }
+        public UserInformation uInfo { get; set; }
 
-        public Profile(CCInfo CC, UserInformation uInfo)
+        public Profile(string n, CCInfo CC, UserInformation uInfo)
         {
+            this.name = n;
             this.CC = CC;
             this.uInfo = uInfo;
         }
