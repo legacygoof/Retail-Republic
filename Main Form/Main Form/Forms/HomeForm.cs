@@ -17,6 +17,8 @@ namespace Main_Form.Forms
         List<TaskInfo> taskList;
         List<Profile> profileList;
         TableLayoutPanel taskPanel;
+        Button runNow;
+        Button StopNow;
         public HomeForm(List<TaskInfo> tl, List<Profile> pl)
         {
             InitializeComponent();
@@ -24,6 +26,8 @@ namespace Main_Form.Forms
             DoubleBuffered = true;
             taskList = tl;
             profileList = pl;
+            runNow = new Button { Text = "►", ForeColor = Color.White ,Anchor = AnchorStyles.Left, BackColor = Color.Green, Width = 20, Height = 20, Padding = new Padding { All = 0 } };
+            StopNow = new Button { Text = "❚❚", ForeColor = Color.White ,Anchor = AnchorStyles.Left, BackColor = Color.Red, Width = 20, Height = 20, Padding = new Padding { All = 0 } };
             createTask = new Add_Task(taskList,profileList);
             createTask.Disposed += CreateTask_Disposed;
             updateTaskList();
@@ -54,6 +58,7 @@ namespace Main_Form.Forms
                 {
                     temp += s + " ";
                 }
+                
                 tableLayoutPanel1.Controls.Add(new Label { Text = ti.site, ForeColor = Color.Yellow, Anchor = AnchorStyles.Left, AutoSize = true }, 0, row);
                 tableLayoutPanel1.Controls.Add(new Label { Text = temp, ForeColor = Color.Yellow, Anchor = AnchorStyles.Left, AutoSize = true }, 1, row);
                 tableLayoutPanel1.Controls.Add(new Label { Text = ti.size, ForeColor = Color.Yellow, Anchor = AnchorStyles.Left, AutoSize = true }, 2, row);
@@ -63,8 +68,10 @@ namespace Main_Form.Forms
                 tableLayoutPanel1.Controls.Add(new Label { Text = "waiting", ForeColor = Color.Yellow, Anchor = AnchorStyles.Left, AutoSize = true }, 5, row);
 
                 tableLayoutPanel1.Controls.Add(new Label { Text = ti.Time.ToShortTimeString(), ForeColor = Color.Yellow, Anchor = AnchorStyles.Left, AutoSize = true }, 6, row);
-                tableLayoutPanel1.Controls.Add(new Button { Text = "Test", Anchor = AnchorStyles.Left, BackColor = Color.Red, Width = 10, Height = 10, Padding = new Padding { All = 0 } }, 7, row);
-                tableLayoutPanel1.Controls.Add(new Button { Text = "Test", Anchor = AnchorStyles.Left, BackColor = Color.Green, Width = 10, Height = 10,  Padding = new Padding { All = 0 } }, 8, row);
+                //.Controls.Add(runNow, 7, row);
+                //tableLayoutPanel1.Controls.Add(StopNow, 8, row);
+                tableLayoutPanel1.Controls.Add(new Button { Text = "►", ForeColor = Color.White, Anchor = AnchorStyles.Left, BackColor = Color.Green, Width = 20, Height = 20, Padding = new Padding { All = 0 } }, 7, row);
+                tableLayoutPanel1.Controls.Add(new Button { Text = "❚❚",ForeColor = Color.White, Anchor = AnchorStyles.Left, BackColor = Color.Red, Width = 20, Height = 20, Padding = new Padding { All = 0 } }, 8, row);
                 row++;
                 
                 

@@ -59,7 +59,9 @@ namespace Main_Form
                 diff = minute - Time.Minute;
             else
                 diff = Time.Minute - minute;
-            Time.AddMinutes((double)diff);
+
+            Time = Time.AddMinutes((double)diff);
+            
 
             string msgTest = "";
             foreach(string s in Keywords)
@@ -67,8 +69,8 @@ namespace Main_Form
                 msgTest += s + "\n";
             }
            // MessageBox.Show(msgTest);
-            MessageBox.Show(Time.Hour.ToString());
-            MessageBox.Show(minute.ToString());
+            //MessageBox.Show(Time.Hour.ToString());
+            //MessageBox.Show(Time.Minute.ToString());
 
 
             
