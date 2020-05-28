@@ -23,5 +23,15 @@ namespace Main_Form.Forms
         {
 
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void firstNameBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

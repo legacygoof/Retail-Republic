@@ -20,16 +20,18 @@ namespace Main_Form
     {
         public void EnterInformation()
         {
+            Proxies proxy = new Proxies();
             UserInformation userInfo = new UserInformation();
             KeyWords keyWords = new KeyWords();
             CCInfo cCInfo = new CCInfo();
-            String keyword = "Silk S/S Work Shirt";
-            String keyword2 = "Peach";
+            String keyword = "Supreme®/The North Face® One World Tee";
+            String keyword2 = "black";
             //String site = "";
+
 
             IWebDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
-            driver.Url = "https://www.supremenewyork.com/shop/all/shirts";
+            driver.Url = "https://www.supremenewyork.com/shop/all/t-shirts";
 
 
             //Find product through keywords
@@ -39,7 +41,7 @@ namespace Main_Form
 
             for (int i = 0; i < count; i++)
             {
-                if (details.ElementAt(i).Text == keyword && details.ElementAt(i + 1).Text == keyword2)
+                if (details.ElementAt(i).Text == keyword && details.ElementAt(i + 1).Text.ToLower() == keyword2)
                 {
                     details.ElementAt(i).Click();
                     break;
@@ -56,11 +58,11 @@ namespace Main_Form
             Thread.Sleep(100);
 
             //Address and Personal Information input
-            driver.FindElement(By.Id("order_billing_name")).SendKeys(userInfo.FName + " " + userInfo.LName);
-            driver.FindElement(By.Id("order_email")).SendKeys(userInfo.Email);
-            driver.FindElement(By.Id("order_tel")).SendKeys(userInfo.TelNumber);
-            driver.FindElement(By.Id("bo")).SendKeys(userInfo.Address);
-            driver.FindElement(By.Id("order_billing_zip")).SendKeys(userInfo.ZipCode);
+            driver.FindElement(By.Id("order_billing_name")).SendKeys("Brandon Langys");
+            driver.FindElement(By.Id("order_email")).SendKeys("Brandonlangys@gmail.com");
+            driver.FindElement(By.Id("order_tel")).SendKeys("815-603-9912");
+            driver.FindElement(By.Id("bo")).SendKeys("1608 Sierra Highlands Ct.");
+            driver.FindElement(By.Id("order_billing_zip")).SendKeys("60586");
 
             //Maybe need this ----- must test
             //-----------------------------------------------------
@@ -76,16 +78,17 @@ namespace Main_Form
             //--------------------------------------------------------------
 
             /// Credit card information inputs
-            driver.FindElement(By.Id("rnsnckrn")).SendKeys(cCInfo.CCNumber);
+            driver.FindElement(By.Id("rnsnckrn")).SendKeys("516854416011005149072533");
             var selectMonth = new SelectElement(driver.FindElement(By.Id("credit_card_month")));
-            selectMonth.SelectByText(cCInfo.CCExpMonth);
+            selectMonth.SelectByText("09");
             var selectYear = new SelectElement(driver.FindElement(By.Id("credit_card_year")));
-            selectYear.SelectByText(cCInfo.CCExpYear);
-            driver.FindElement(By.Id("orcer")).SendKeys(cCInfo.CCCsv);
+            selectYear.SelectByText("2024");
+            driver.FindElement(By.Id("orcer")).SendKeys("964");
             driver.FindElement(By.ClassName("iCheck-helper")).Click();
             var check = driver.FindElement(By.Id("order_terms"));
             Actions action = new Actions(driver);
             action.MoveToElement(check).Click().Perform();
+            Thread.Sleep(3000);
             driver.FindElement(By.Name("commit")).Click();
             // Thread.Sleep(1000);
 

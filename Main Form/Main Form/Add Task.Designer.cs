@@ -54,6 +54,7 @@
             this.SiteBox.Name = "SiteBox";
             this.SiteBox.Size = new System.Drawing.Size(145, 20);
             this.SiteBox.TabIndex = 0;
+            this.SiteBox.TextChanged += new System.EventHandler(this.SiteBox_TextChanged);
             // 
             // label1
             // 
@@ -77,6 +78,7 @@
             this.SizeBox.Name = "SizeBox";
             this.SizeBox.Size = new System.Drawing.Size(145, 21);
             this.SizeBox.TabIndex = 2;
+            this.SizeBox.SelectedIndexChanged += new System.EventHandler(this.SizeBox_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -143,6 +145,7 @@
             this.ProfileBox.Name = "ProfileBox";
             this.ProfileBox.Size = new System.Drawing.Size(145, 21);
             this.ProfileBox.TabIndex = 5;
+            this.ProfileBox.SelectedIndexChanged += new System.EventHandler(this.ProfileBox_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -195,7 +198,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(294, 41);
+            this.panel1.Size = new System.Drawing.Size(298, 41);
             this.panel1.TabIndex = 9;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
@@ -224,7 +227,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(65)))));
-            this.ClientSize = new System.Drawing.Size(294, 312);
+            this.ClientSize = new System.Drawing.Size(298, 312);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.CreateTask);
             this.Controls.Add(this.AmPmBox);

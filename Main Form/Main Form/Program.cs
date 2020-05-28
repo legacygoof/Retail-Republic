@@ -12,6 +12,10 @@ using System.Security.Policy;
 using System.Net.Sockets;
 using System.Drawing.Text;
 using Main_Form.Utils;
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+//using ReadJSONusingCsharp.Models;
 
 namespace Main_Form
 {
@@ -24,29 +28,19 @@ namespace Main_Form
         [STAThread]
         static void Main()
         {
-            Proxies proxy = new Proxies();
-            //Application.Run(new Login());
-            //Application.Run(new Add_Task());
-            //Application.Run(new Retail_Republic());
-            //CheckOut checkOut = new CheckOut();
-            //checkOut.EnterInformation();
-            var cService = ChromeDriverService.CreateDefaultService();
-            cService.HideCommandPromptWindow = true;
+            List<test> t = new List<test>();
+            t.Add(new test("profile 1", "test"));
+            t.Add(new test("profile 2", "test"));
+            string json = JsonConvert.SerializeObject(t);
+            File.WriteAllText("profiles.json", json);
+            string s = File.ReadAllText("profiles.json");
+            t = JsonConvert.DeserializeObject<List<test>>(s);
+            foreach(var Test in t)
+            {
+                Console.WriteLine(Test.name);
+                Console.WriteLine(Test.Title);
+            }
 
-            var options = new ChromeOptions();
-
-            options.AddArguments("--proxy-server=" + proxy.IP + ":" + proxy.port);
-            //options.AddExtension(@"C:\My Folder\ProxyChanger.crx");
-
-            options.Proxy = null;
-
-            //string userAgent = "<< User Agent Text >>";
-
-            //options.AddArgument($"--user-agent={userAgent}$PC${"<< User Name >>" + ":" + "<< Password >>"}");
-
-            IWebDriver _webDriver = new ChromeDriver(cService, options);
-
-            _webDriver.Navigate().GoToUrl("https://whatismyipaddress.com/");
 
 
         }

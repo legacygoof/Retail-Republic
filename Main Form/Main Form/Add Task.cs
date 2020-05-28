@@ -48,12 +48,28 @@ namespace Main_Form
             {
                 keywords.Add(kw[i]);
             }
-            int h = 0;
-            if (AmPmBox.SelectedIndex == 0)
-                h = Convert.ToInt32(TimeBox.Text);
+            if (SiteBox.Text == "")
+                MessageBox.Show("No Input in Site Box");
+            else if (SizeBox.Text == "")
+                MessageBox.Show("No Input in Size Box");
+            else if (KeywordBox.Text == "")
+                MessageBox.Show("No Input in Keywords Box");
+            else if (CategoryBox.Text == "")
+                MessageBox.Show("No Input in Categories Box");
+            else if (ProfileBox.Text == "")
+                MessageBox.Show("No Input in Profile Box");
+            else if (TimeBox.Text == "")
+                MessageBox.Show("No Input in Time Box");
             else
-                h = Convert.ToInt32(TimeBox.Text) + 12;
-            TaskInfo ti = new TaskInfo(SiteBox.Text,SizeBox.Text,keywords,CategoryBox.Text,"red", new Profile(new CCInfo(), new UserInformation()), h);
+            {
+                int h = 0;
+                if (AmPmBox.SelectedIndex == 0)
+                    h = Convert.ToInt32(TimeBox.Text);
+                else
+                    h = Convert.ToInt32(TimeBox.Text) + 12;
+                TaskInfo ti = new TaskInfo(SiteBox.Text, SizeBox.Text, keywords, CategoryBox.Text, "red", new Profile(new CCInfo(), new UserInformation()), h);
+            }
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -78,6 +94,21 @@ namespace Main_Form
         private void TimeBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void SiteBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SizeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ProfileBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

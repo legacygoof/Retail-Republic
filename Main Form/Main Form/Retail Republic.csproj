@@ -107,11 +107,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\CCInfo.cs" />
     <Compile Include="Utils\Flags.cs" />
+    <Compile Include="Utils\JsonRead.cs" />
     <Compile Include="Utils\KeyWords.cs" />
+    <Compile Include="Utils\objects.cs" />
+    <Compile Include="Utils\ObjectsCollection.cs" />
     <Compile Include="Utils\PacketReader.cs" />
     <Compile Include="Utils\PacketWriter.cs" />
     <Compile Include="Utils\Profile.cs" />
+    <Compile Include="Utils\Proxies.cs" />
     <Compile Include="Utils\TaskInfo.cs" />
+    <Compile Include="Utils\test.cs" />
     <Compile Include="Utils\UserInformation.cs" />
     <EmbeddedResource Include="Add Task.resx">
       <DependentUpon>Add Task.cs</DependentUpon>
