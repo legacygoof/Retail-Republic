@@ -90,6 +90,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(120, 212);
             this.listBox1.TabIndex = 1;
+            this.listBox1.SelectedValueChanged += new System.EventHandler(this.listBox1_SelectedValueChanged);
             // 
             // label1
             // 
@@ -258,9 +259,21 @@
             // expYearBox
             // 
             this.expYearBox.FormattingEnabled = true;
+            this.expYearBox.Items.AddRange(new object[] {
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025",
+            "2026",
+            "2027",
+            "2028",
+            "2029",
+            "2030"});
             this.expYearBox.Location = new System.Drawing.Point(308, 64);
             this.expYearBox.Name = "expYearBox";
-            this.expYearBox.Size = new System.Drawing.Size(100, 21);
+            this.expYearBox.Size = new System.Drawing.Size(136, 21);
             this.expYearBox.TabIndex = 1;
             // 
             // phoneNumBox
@@ -287,9 +300,22 @@
             // expMonthBox
             // 
             this.expMonthBox.FormattingEnabled = true;
+            this.expMonthBox.Items.AddRange(new object[] {
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12"});
             this.expMonthBox.Location = new System.Drawing.Point(308, 38);
             this.expMonthBox.Name = "expMonthBox";
-            this.expMonthBox.Size = new System.Drawing.Size(100, 21);
+            this.expMonthBox.Size = new System.Drawing.Size(136, 21);
             this.expMonthBox.TabIndex = 1;
             // 
             // emailBox
@@ -303,7 +329,7 @@
             // 
             this.ccsNumBox.Location = new System.Drawing.Point(308, 91);
             this.ccsNumBox.Name = "ccsNumBox";
-            this.ccsNumBox.Size = new System.Drawing.Size(100, 20);
+            this.ccsNumBox.Size = new System.Drawing.Size(136, 20);
             this.ccsNumBox.TabIndex = 0;
             // 
             // lastNameBox
@@ -325,7 +351,7 @@
             // 
             this.ccNumBox.Location = new System.Drawing.Point(308, 11);
             this.ccNumBox.Name = "ccNumBox";
-            this.ccNumBox.Size = new System.Drawing.Size(100, 20);
+            this.ccNumBox.Size = new System.Drawing.Size(136, 20);
             this.ccNumBox.TabIndex = 0;
             // 
             // SettingsForm
@@ -341,6 +367,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SettingsForm";
             this.Text = "SettingsForm";
+            this.Load += new System.EventHandler(this.SettingsForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

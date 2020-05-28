@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Main_Form
 {
-    class UserInformation
+    public class UserInformation
     {
         private string fName, lName, email, telNumber, address, zipCode;
 
