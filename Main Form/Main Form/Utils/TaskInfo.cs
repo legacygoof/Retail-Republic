@@ -17,6 +17,8 @@ namespace Main_Form
         public Profile profile;
         public DateTime Time;
 
+        public string status = "Waiting";
+
 
         public int hour;
         int minute;
@@ -47,21 +49,28 @@ namespace Main_Form
 
 
 
-            Time = DateTime.Now;
+            //Time = DateTime.Now;
+            /* if (ampm > 0)
+                 hour += 12;
+             if (hour > Time.Hour)
+                 diff = hour - Time.Hour;
+             else
+                 diff = Time.Hour - hour;
+             Time = Time.AddHours((double)diff);
+             if(minute > Time.Minute)
+                 diff = minute - Time.Minute;
+             else
+                 diff = Time.Minute - minute;*/
             if (ampm > 0)
+            {
                 hour += 12;
-            if (hour > Time.Hour)
-                diff = hour - Time.Hour;
-            else
-                diff = Time.Hour - hour;
-            Time = Time.AddHours((double)diff);
-            if(minute > Time.Minute)
-                diff = minute - Time.Minute;
-            else
-                diff = Time.Minute - minute;
+                Console.WriteLine("Ran if PM is triggered: " + hour);
+            }
+            Time = Time.AddHours(hour);
+            Time = Time.AddMinutes(minute);
 
-            Time = Time.AddMinutes((double)diff);
-            
+            //Time = Time.AddMinutes((double)diff);
+
 
             string msgTest = "";
             foreach(string s in Keywords)
@@ -75,5 +84,59 @@ namespace Main_Form
 
             
         }
+
+
+        public TaskInfo(string st, string sz, string k, string cat, string c, Profile p, string time, int ampm)
+        {
+            string[] newTime = time.Split(':');
+            size = sz;
+            color = c;
+            category = cat;
+            site = st;
+            hour = Convert.ToInt32(newTime[0]);
+            minute = Convert.ToInt32(newTime[1]);
+
+            profile = p;
+            //color = "Black";
+            //site = "";
+
+
+
+            //Time = DateTime.Now;
+            /* if (ampm > 0)
+                 hour += 12;
+             if (hour > Time.Hour)
+                 diff = hour - Time.Hour;
+             else
+                 diff = Time.Hour - hour;
+             Time = Time.AddHours((double)diff);
+             if(minute > Time.Minute)
+                 diff = minute - Time.Minute;
+             else
+                 diff = Time.Minute - minute;*/
+            if (ampm > 0)
+            {
+                hour += 12;
+                Console.WriteLine("Ran if PM is triggered: " + hour);
+            }
+            Time = Time.AddHours(hour);
+            Time = Time.AddMinutes(minute);
+
+            //Time = Time.AddMinutes((double)diff);
+
+
+            string msgTest = "";
+            //foreach (string s in Keywords)
+           // {
+           //     msgTest += s + "\n";
+           // }
+            // MessageBox.Show(msgTest);
+            //MessageBox.Show(Time.Hour.ToString());
+            //MessageBox.Show(Time.Minute.ToString());
+
+
+
+        }
+
     }
 }

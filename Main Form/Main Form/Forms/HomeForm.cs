@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,11 +18,15 @@ namespace Main_Form.Forms
         List<TaskInfo> taskList;
         List<Profile> profileList;
         TableLayoutPanel taskPanel;
+        BackgroundWorker bw;
         Button runNow;
         Button StopNow;
         public HomeForm(List<TaskInfo> tl, List<Profile> pl)
         {
             InitializeComponent();
+            bw = new BackgroundWorker();
+            bw.DoWork += Bw_DoWork;
+            bw.RunWorkerCompleted += Bw_RunWorkerCompleted;
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             DoubleBuffered = true;
             taskList = tl;
@@ -31,6 +36,18 @@ namespace Main_Form.Forms
             createTask = new Add_Task(taskList,profileList);
             createTask.Disposed += CreateTask_Disposed;
             updateTaskList();
+            bw.RunWorkerAsync();
+        }
+
+        private void Bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+                updateTaskList();
+            bw.RunWorkerAsync();
+        }
+
+        private void Bw_DoWork(object sender, DoWorkEventArgs e)
+        {
+                Thread.Sleep(3000);
         }
 
         private void CreateTask_Disposed(object sender, EventArgs e)
@@ -58,14 +75,21 @@ namespace Main_Form.Forms
                 {
                     temp += s + " ";
                 }
-                
+                Color statColor = new Color();
+
+                if (ti.status.Contains("Failed"))
+                    statColor = Color.Red;
+                else if (ti.status.Contains("Waiting"))
+                    statColor = Color.Yellow;
+                else
+                    statColor = Color.Green;
                 tableLayoutPanel1.Controls.Add(new Label { Text = ti.site, ForeColor = Color.Yellow, Anchor = AnchorStyles.Left, AutoSize = true }, 0, row);
                 tableLayoutPanel1.Controls.Add(new Label { Text = temp, ForeColor = Color.Yellow, Anchor = AnchorStyles.Left, AutoSize = true }, 1, row);
                 tableLayoutPanel1.Controls.Add(new Label { Text = ti.size, ForeColor = Color.Yellow, Anchor = AnchorStyles.Left, AutoSize = true }, 2, row);
 
                 tableLayoutPanel1.Controls.Add(new Label { Text = ti.profile.name, ForeColor = Color.Yellow, Anchor = AnchorStyles.Left, AutoSize = true }, 3, row);
                 tableLayoutPanel1.Controls.Add(new Label { Text = "NONE", ForeColor = Color.Yellow, Anchor = AnchorStyles.Left, AutoSize = true }, 4, row);
-                tableLayoutPanel1.Controls.Add(new Label { Text = "waiting", ForeColor = Color.Yellow, Anchor = AnchorStyles.Left, AutoSize = true }, 5, row);
+                tableLayoutPanel1.Controls.Add(new Label { Text = ti.status, ForeColor = statColor, Anchor = AnchorStyles.Left, AutoSize = true }, 5, row);
 
                 tableLayoutPanel1.Controls.Add(new Label { Text = ti.Time.ToShortTimeString(), ForeColor = Color.Yellow, Anchor = AnchorStyles.Left, AutoSize = true }, 6, row);
                 //.Controls.Add(runNow, 7, row);
@@ -84,7 +108,10 @@ namespace Main_Form.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             if (createTask.IsDisposed)
+            {
                 createTask = new Add_Task(taskList, profileList);
+                createTask.Disposed += CreateTask_Disposed;
+            }
             createTask.Show();
         }
 
