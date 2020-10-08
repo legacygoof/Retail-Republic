@@ -28,20 +28,9 @@ namespace Main_Form
         [STAThread]
         static void Main()
         {
-            List<test> t = new List<test>();
-            t.Add(new test("profile 1", "test"));
-            t.Add(new test("profile 2", "test"));
-            string json = JsonConvert.SerializeObject(t);
-            File.WriteAllText("profiles.json", json);
-            string s = File.ReadAllText("profiles.json");
-            t = JsonConvert.DeserializeObject<List<test>>(s);
-            foreach(var Test in t)
-            {
-                Console.WriteLine(Test.name);
-                Console.WriteLine(Test.Title);
-            }
-
-
+            //Application.Run(new Login());
+            //Application.Run(new Add_Task());
+            Application.Run(new Retail_Republic());
 
         }
     }

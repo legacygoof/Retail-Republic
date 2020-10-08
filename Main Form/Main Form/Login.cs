@@ -140,6 +140,7 @@ namespace Main_Form
                             //Retail_Republic rr = new Retail_Republic();
                             //rr.Show();
                             Application.Run(new Retail_Republic());
+                            
                         }
                         else
                         {
@@ -172,7 +173,8 @@ namespace Main_Form
         }
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("Logged In");
+            this.Hide();
+            //MessageBox.Show("Logged In");
             //Main_Form form = new Main_Form();
             //form.Show();
             //this.Hide();

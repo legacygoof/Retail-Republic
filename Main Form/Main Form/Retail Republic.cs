@@ -59,21 +59,24 @@ namespace Main_Form
             
             string s = File.ReadAllText("profiles.json");
             profileList = JsonConvert.DeserializeObject<List<Profile>>(s);
+
+
         }
 
         public void readJsonData()
         {
             
-            profileList = new List<Profile>();
-            profileList.Add(new Profile("Profile 1",new CCInfo { CCNumber = "234324324", CCExpYear = "3453", CCCsv = "324", CCExpMonth = "22" }, new UserInformation { Address = "222", Email = "asf@asf.com", FName = "Ryan", LName = "dill", TelNumber = "2213213123", ZipCode = "24242" }));
-            profileList.Add(new Profile("Profile 2" ,new CCInfo { CCNumber = "234324324", CCExpYear = "3453", CCCsv = "324", CCExpMonth = "22" }, new UserInformation { Address = "222", Email = "asf@asf.com", FName = "Ryan", LName = "dill", TelNumber = "2213213123", ZipCode = "24242" }));
-            string json = JsonConvert.SerializeObject(profileList);
-            File.WriteAllText("profiles.json", json);
-            string s = File.ReadAllText("profiles.json");
-            //t = JsonConvert.DeserializeObject<List<test>>(s);
+            //profileList = new List<Profile>();
+            //profileList.Add(new Profile("Profile 1",new CCInfo { CCNumber = "234324324", CCExpYear = "3453", CCCsv = "324", CCExpMonth = "22" }, new UserInformation { Address = "222", Email = "asf@asf.com", FName = "Ryan", LName = "dill", TelNumber = "2213213123", ZipCode = "24242" }));
+            //profileList.Add(new Profile("Profile 2" ,new CCInfo { CCNumber = "234324324", CCExpYear = "3453", CCCsv = "324", CCExpMonth = "22" }, new UserInformation { Address = "222", Email = "asf@asf.com", FName = "Ryan", LName = "dill", TelNumber = "2213213123", ZipCode = "24242" }));
+            //string json = JsonConvert.SerializeObject(profileList);
+            //File.WriteAllText("profiles.json", json);
+            //string s = File.ReadAllText("profiles.json");
+            //profileList = JsonConvert.DeserializeObject<List<Profile>>(s);
             //test[] t = JsonConvert.DeserializeObject<test[]>(s);
             MessageBox.Show(profileList[1].name);
-            profileList.Clear();
+            
+            //profileList.Clear();
 
         }
 
@@ -224,6 +227,11 @@ namespace Main_Form
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        private void Retail_Republic_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

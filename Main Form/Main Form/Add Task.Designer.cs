@@ -47,6 +47,7 @@
             this.ColorBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -75,7 +76,8 @@
             "Small",
             "Medium",
             "Large",
-            "XL"});
+            "XL",
+            "S/M"});
             this.SizeBox.Location = new System.Drawing.Point(82, 120);
             this.SizeBox.Name = "SizeBox";
             this.SizeBox.Size = new System.Drawing.Size(145, 21);
@@ -96,6 +98,7 @@
             this.KeywordBox.Name = "KeywordBox";
             this.KeywordBox.Size = new System.Drawing.Size(145, 20);
             this.KeywordBox.TabIndex = 3;
+            this.KeywordBox.TextChanged += new System.EventHandler(this.KeywordBox_TextChanged);
             // 
             // label3
             // 
@@ -249,12 +252,23 @@
             this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
             this.maskedTextBox1.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox1_MaskInputRejected);
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "hh:mm tt / dd-MM";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(82, 254);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(145, 20);
+            this.dateTimePicker1.TabIndex = 11;
+            this.dateTimePicker1.Visible = false;
+            // 
             // Add_Task
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(65)))));
             this.ClientSize = new System.Drawing.Size(294, 404);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.CreateTask);
@@ -276,6 +290,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Add_Task";
             this.Text = "Add Task";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Add_Task_FormClosing);
             this.Load += new System.EventHandler(this.Add_Task_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -305,5 +320,6 @@
         private System.Windows.Forms.TextBox ColorBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

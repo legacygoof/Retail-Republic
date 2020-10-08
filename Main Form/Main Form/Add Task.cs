@@ -18,6 +18,7 @@ namespace Main_Form
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         List<string> keywords;
+        List<Thread> threadList = new List<Thread>();
 
         //Global Lists
         List<TaskInfo> taskList;
@@ -56,43 +57,52 @@ namespace Main_Form
             maskedTextBox1.Text = "10:00";
             CategoryBox.SelectedIndex = 0;
         }
-
+        int i = 0;
         private void CreateTask_Click(object sender, EventArgs e)
         {
             //MessageBox.Show(maskedTextBox1.Text);
             string k = KeywordBox.Text;
-            k = k.Replace(" ", string.Empty);
-            string[] kw = k.Split(',');
-            for (int i = 0; i < kw.Length; i++)
-            {
-                keywords.Add(kw[i]);
-            }
+            /* k = k.Replace(" ", string.Empty);
+             string[] kw = k.Split(',');
+             for (int i = 0; i < kw.Length; i++)
+             {
+                 keywords.Add(kw[i]);
+             }*/
+            keywords.Add(k);
             int h = 0;
             //if (AmPmBox.SelectedIndex == 0)
             //    h = Convert.ToInt32(TimeBox.Text);
             //else
             //    h = Convert.ToInt32(TimeBox.Text) + 12;
-            TaskInfo ti = new TaskInfo(SiteBox.Text, SizeBox.Text, keywords, CategoryBox.Text, ColorBox.Text, profileList[ProfileBox.SelectedIndex], maskedTextBox1.Text, AmPmBox.SelectedIndex);// new Profile(new CCInfo(), new UserInformation()), h);
+            //TaskInfo ti = new TaskInfo(SiteBox.Text, SizeBox.Text, KeywordBox.Text, CategoryBox.Text, ColorBox.Text, profileList[ProfileBox.SelectedIndex], maskedTextBox1.Text, AmPmBox.SelectedIndex);// new Profile(new CCInfo(), new UserInformation()), h);
+            TaskInfo ti = new TaskInfo(SiteBox.Text, SizeBox.Text, keywords, CategoryBox.Text, ColorBox.Text, profileList[ProfileBox.SelectedIndex], maskedTextBox1.Text, AmPmBox.SelectedIndex);
             taskList.Add(ti);
             keywords.Clear();
            // CheckOut co = new CheckOut();
-            //Thread test;
-            //est = new Thread(Test);
-            //test.Start();
+            Thread th;
+            th = new Thread(Test);
+            th.Name = ti.Keywords.ToString();
+            threadList.Add(th);
             
 
         }
         private void Test()
         {
-            while(DateTime.Now.Hour != 16)
+            Console.WriteLine("list Size" + taskList.Count);
+            Console.WriteLine(i);
+            while (DateTime.Now.Hour != taskList[i].hour)
             {
-                Thread.Sleep(2000);
+             //   Thread.Sleep(2000);
             }
-            Thread.Sleep(5000);
+           // Thread.Sleep(5000);
             //if(DateTime.Now.Minute == 1)
                 //MessageBox.Show("called");
             CheckOut co = new CheckOut();
-            co.EnterInformation(SiteBox.Text, KeywordBox.Text, ColorBox.Text);
+            Console.WriteLine(taskList[i].site);
+            Console.WriteLine(i);
+            co.EnterInformation(taskList, i);
+            
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -141,6 +151,23 @@ namespace Main_Form
         private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
             
+        }
+
+        private void Add_Task_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            foreach(Thread t in threadList)
+            {
+                t.Start();
+                
+                if(i < taskList.Count-1)
+                i++;
+                Thread.Sleep(1000);
+            }
+        }
+
+        private void KeywordBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
