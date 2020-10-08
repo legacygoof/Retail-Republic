@@ -62,12 +62,13 @@ namespace Main_Form
         {
             //MessageBox.Show(maskedTextBox1.Text);
             string k = KeywordBox.Text;
-            k = k.Replace(" ", string.Empty);
-            string[] kw = k.Split(',');
-            for (int i = 0; i < kw.Length; i++)
-            {
-                keywords.Add(kw[i]);
-            }
+            /* k = k.Replace(" ", string.Empty);
+             string[] kw = k.Split(',');
+             for (int i = 0; i < kw.Length; i++)
+             {
+                 keywords.Add(kw[i]);
+             }*/
+            keywords.Add(k);
             int h = 0;
             //if (AmPmBox.SelectedIndex == 0)
             //    h = Convert.ToInt32(TimeBox.Text);
@@ -162,6 +163,11 @@ namespace Main_Form
                 i++;
                 Thread.Sleep(1000);
             }
+        }
+
+        private void KeywordBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

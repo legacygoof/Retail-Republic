@@ -76,7 +76,8 @@
             "Small",
             "Medium",
             "Large",
-            "XL"});
+            "XL",
+            "S/M"});
             this.SizeBox.Location = new System.Drawing.Point(82, 120);
             this.SizeBox.Name = "SizeBox";
             this.SizeBox.Size = new System.Drawing.Size(145, 21);
@@ -97,6 +98,7 @@
             this.KeywordBox.Name = "KeywordBox";
             this.KeywordBox.Size = new System.Drawing.Size(145, 20);
             this.KeywordBox.TabIndex = 3;
+            this.KeywordBox.TextChanged += new System.EventHandler(this.KeywordBox_TextChanged);
             // 
             // label3
             // 

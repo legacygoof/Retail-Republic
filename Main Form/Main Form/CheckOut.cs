@@ -191,6 +191,7 @@ namespace Main_Form
 
         public void EnterInformation(List<TaskInfo> ti, int loc)
         {
+            MessageBox.Show("RUNNING");
             ti[loc].status = "Running!";
             //https://www.supremenewyork.com/shop/all/t-shirts
             //Supreme®/The North Face® 
@@ -206,7 +207,7 @@ namespace Main_Form
             IWebDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             driver.Url = ti[loc].site;
-
+            MessageBox.Show(driver.Url);
 
             //Find product through keywords
             IList<IWebElement> details = driver.FindElements(By.ClassName("name-link"));
@@ -217,13 +218,16 @@ namespace Main_Form
             {
                 //if (details.ElementAt(i).Text == "Beaded Keychain" && details.ElementAt(i + 1).Text == keyword2)
                 string product = "";
-                for(int j = 0; j < ti[loc].Keywords.Count; j++)
+                /*for(int j = 0; j < ti[loc].Keywords.Count; j++)
                 {
                     if(j != ti[loc].Keywords.Count)
                         product += ti[loc].Keywords[j] + " ";
                     else
                     product += ti[loc].Keywords[j];
-                }
+                }*/
+
+                //MessageBox.Show(ti[loc].Keywords[0]);
+                product = ti[loc].Keywords[0];
                 //MessageBox.Show(ti[loc].Keywords[0].ToLower());
                 if (details.ElementAt(i).Text.ToLower().Contains(ti[loc].Keywords[0].ToLower()) && details.ElementAt(i + 1).Text.ToLower() == ti[loc].color.ToLower())//Contains("Floating Keychain"))
                 //if(details.ElementAt(i).Text.Contains("Floating Keychain") && details.ElementAt(i+1).Text.Equals("Black"))
@@ -242,13 +246,13 @@ namespace Main_Form
                 {
                     var option = driver.FindElement(By.Id("s"));
                     var selectElement = new SelectElement(option);
-                    selectElement.SelectByText("s/m");
+                    selectElement.SelectByText(ti[loc].size);
                     sizeFound = true;
                 }
                 catch (Exception e)
                 {
                     
-                    ti[loc].status = "Failed - Sold Out";
+                    ti[loc].status = "Failed - Sold Out \n Or Size Out/ Stock";
                     return;
                 }
                 

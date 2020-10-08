@@ -24,8 +24,8 @@ namespace Main_Form
         {
             //Application.Run(new Login());
             //Application.Run(new Add_Task());
+            //Application.Run(new Login());
             Application.Run(new Retail_Republic());
-
         }
     }
 
