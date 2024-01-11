@@ -7,24 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 
-
-
-namespace Main_Form
+namespace Republic_Admin
 {
-    public partial class Main_From : Form
+    public partial class Form1 : Form
     {
-        public Main_From()
+        public Form1()
         {
             InitializeComponent();
         }
-
-        private void Main_From_Load(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }
